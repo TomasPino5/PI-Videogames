@@ -8,7 +8,7 @@ const router = Router();
 
 router.get('/videogames', getVideogame)
 router.get('/videogames/:idVideogame', getIdVideogame)
-router.get('/videogames/name?=:name', getNameVideogame)
+router.get('/videogames/:name', getNameVideogame)
 router.post('/videogames', postVideogame)
 router.get('/genres', getGenre)
 

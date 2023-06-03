@@ -1,19 +1,32 @@
-const axios = require('axios');
+const {Videogames} = require("../db");
+const axios = require("axios")
 require('dotenv').config();
-const { VG_URL, API_KEY } = process.env;
+const {VG_URL,API_KEY} = process.env;
+
 
 const getVideogameHandler = async () => {
-  let results = [];
-  try {
-    // La api te trae 20 juegos por solicitud entonces realizo 5 solicitudes para obtener un total de 100 videojuegos (20 en cada solicitud)
-    for (let i = 0; i < 5; i++) {
-      const response = await axios.get(`${VG_URL}?key=${API_KEY}`);
-      results = results.concat(response.data); // Es para acumular los resultados de varias solicitudes en un solo arreglo, cada vez que se obtiene una respuesta con nuevos videojuegos, esos videojuegos se agregan al arreglo results utilizando concat().
+    let allVideogamesArray = [];
+    let pageNum = 1;
+    
+    while (allVideogamesArray.length < 100) {
+      
+      let page = `&page=${pageNum}`
+      const url = `${VG_URL}?key=${API_KEY}${page}`;
+      const response = await axios.get(url);
+      const { results, next } = response.data;
+       // de todo lo que devuelve la api, me quedo solo con el array de 20 resultados y la url de los siguientes 20
+      allVideogamesArray = allVideogamesArray.concat(results); 
+      
+      if (!next) {
+        break;
+         // en caso de que no haya mas paginas (dificil), corta el ciclo
+      }
+      
+      pageNum++;
     }
-    return results.slice(0, 100); // Esto es para asegurarme de devolver solo los primeros 100 videojuegos del arreglo "results"
-  } catch (error) {
-    throw new Error(error.message);
-  }
-};
-
+    const DBVideogames = await Videogames.findAll();
+    const allVideogames = DBVideogames.concat(allVideogamesArray);
+    return allVideogames;
+  };
+  
 module.exports = { getVideogameHandler };

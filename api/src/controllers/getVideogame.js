@@ -5,7 +5,7 @@ const getVideogame = async (req, res) => {
     const videogame = await getVideogameHandler();
     return res.json(videogame);
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(400).json({ message: error.message });
   }
 };
 

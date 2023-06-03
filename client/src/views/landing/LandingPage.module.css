@@ -1,0 +1,67 @@
+.contenedor {
+    font-family: 'Press Start 2P', cursive;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.titulo {
+    cursor: none;
+    font-size: 4.5rem;
+    margin-top: 10%; 
+    position: relative;
+}
+
+.p {
+    cursor: none;
+    font-size: 0.9rem; 
+    position: absolute; 
+    bottom: 15px; 
+    left: 30px;
+}
+
+.titulo:hover,
+.p:hover {
+    animation: rainbow 1s linear infinite;
+}
+
+@keyframes rainbow {
+    0% {
+        color: hsl(0, 100%, 50%); /* Color inicial (rojo) */
+    }
+    20% {
+        color: hsl(60, 100%, 50%); /* Color a los 20% (amarillo) */
+    }
+    40% {
+        color: hsl(120, 100%, 50%); /* Color a los 40% (verde) */
+    }
+    60% {
+        color: hsl(180, 100%, 50%); /* Color a los 60% (cian) */
+    }
+    80% {
+        color: hsl(240, 100%, 50%); /* Color a los 80% (azul) */
+    }
+    100% {
+        color: hsl(300, 100%, 50%); /* Color final a los 100% (magenta) */
+    }
+}
+
+.boton {
+    margin-top: 100px;
+    padding: 0.8%;
+    font-family: 'Press Start 2P', cursive;
+    background-color: rgb(226, 217, 217);
+    color:black;
+    font-size: 120%;
+    border: solid 3px black;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: 1s ease;
+    box-shadow: 4px 4px 5px 0px rgba(0,0,0,0.76);
+}
+
+.boton:hover {
+    background-color: rgb(130, 130, 130);
+    box-shadow: 6px 6px 5px 0px rgba(0,0,0,0.76);
+}
