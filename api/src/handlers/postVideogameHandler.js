@@ -1,15 +1,16 @@
 const { Videogames } = require('../db')
 
-const postVideogameHandler = async ({ name, description, platforms, image, released, rating }) => {
+const postVideogameHandler = async ({ name, image, description, genres, rating, platforms, released }) => {
     try {
         
         const videogame = await Videogames.create({
             name: name,
-            description: description,
-            platforms: platforms,
             image: image,
+            description: description,
+            genres: genres,
+            rating: rating,
+            platforms: platforms,
             released: released,
-            rating: rating
         });
         return videogame;
     } catch (error) {

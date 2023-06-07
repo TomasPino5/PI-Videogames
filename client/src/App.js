@@ -1,29 +1,22 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-// import { useState } from 'react';
-// import axios from 'axios';
+// import { useDispatch } from 'react-redux';
 import { LandingPage, HomePage, DetailPage, FormPage } from './views/index';
+// import { getVideogamesByName } from './redux/actions';
 import Nav from './components/nav/Nav';
 
 function App() {
 
-  // const [videogames, setVideogames] = useState([]);
-
-  // async function onSearch(name) {
-  //   try {
-  //     const { data } = await axios(`http://localhost:3001/videogames/${name}`)
-  //     if (data.id) {
-  //       setVideogames((oldVg) => [...oldVg, data]);
-  //     } else {
-  //       alert('¡No hay videojuegos con este nombre!');
-  //     }
-  //   } catch (error) {
-  //     throw new Error(error.message);
-  //   }
-  // }
-
   const location = useLocation();
+  // const dispatch = useDispatch();
+
+  // const handleSearch = (name) => {
+  //   dispatch(getVideogamesByName(name))
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }
 
   return (
     <div className="App">

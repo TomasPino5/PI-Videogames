@@ -1,0 +1,11 @@
+.form {
+    margin-top: 7%;
+}
+
+.checkboxContainer {
+    display: flex;
+}
+  
+.checkboxItem {
+    margin-right: 10px;
+}
